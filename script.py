@@ -7,22 +7,15 @@ reddit = praw.Reddit(client_id='',
                         password='')
 
 
-#asks user for url and file name
-user_Url = input('Input the url: ')
+bot_summon = "!urbandefine"
 
-new_file = input("Input name of the file: ')
+subreddit = reddit.subreddit('testingground4bots')
 
-submission = reddit.submission(url=user_Url)
+for comment in subreddit.stream.comments():
+    if bot_summon in comment.body:
+        comment.reply("Thankyou for summoning me! I am currently under construction and will one day be able to provide you with deffinitions from the urban dictionary.")
+        print("responding to comment")
 
-
-
-#Creates new text file with the comments taken
-
-with open(new_file,'w') as cf:
-
-    submission.comments.replace_more(limit=0)
-    for top_level_comment in submission.comments:
-        cf.write(top_level_comment.body)
 
 
 
