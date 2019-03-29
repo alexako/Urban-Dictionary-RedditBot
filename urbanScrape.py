@@ -27,27 +27,7 @@ def read_definition(word_url):
     return [word,definition,example]
 
 
-def main():
-    print("Type 'exit' to close")
-    x = ""
-    while True:
-        if x == "exit":
-            break
-        try:
-            x = str(input("What lesson in Urban definitions would you like? ")).lower().replace(" ","+")
-        except ValueError:
-            print("Sorry, error :(")
-        retList=read_definition(get_definition_link(str(x)))
-        retList[1]=retList[1].replace("\r","\n\n~ ")
 
-        if retList[0]!="NULL":
 
-            print(str(retList[0])+": \n"+"~ "+retList[1][1:])
 
-            print("Example: "+retList[2].replace("\r","\n\n"))
-        else:
-            print('"'+x+'"'+retList[1])
 
-    print("\nThanks for using!")
-if __name__ == "__main__":
-    main()

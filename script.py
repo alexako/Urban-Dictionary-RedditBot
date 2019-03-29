@@ -1,4 +1,5 @@
 import praw
+import urbanScrape as us
 
 reddit = praw.Reddit(client_id='',
                         client_secret='',
@@ -7,14 +8,15 @@ reddit = praw.Reddit(client_id='',
                         password='')
 
 
-bot_summon = "!urbandefine"
-
 subreddit = reddit.subreddit('testingground4bots')
 
 for comment in subreddit.stream.comments():
     if bot_summon in comment.body:
-        comment.reply("Thankyou for summoning me! I am currently under construction and will one day be able to provide you with deffinitions from the urban dictionary.")
-        print("responding to comment")
+        x = comment.body.split()
+        try:
+            comment.reply((us.read_definition(us.get_definition_link(str(x[1])))))
+        except:
+            comment.reply("I can't define a word that does not exist")
 
 
 
