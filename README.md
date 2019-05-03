@@ -2,5 +2,6 @@
 Provides the definition to a word using urban dictionary 
 # How to use 
 Comment !urbandefine followed by the word you want to define. 
+
 Example: !urbandefine yeet
 
