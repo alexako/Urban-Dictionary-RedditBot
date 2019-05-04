@@ -27,8 +27,10 @@ def run_bot():
         if bot_summon in comment.body:
             try:
                 x = us.read_definition(urban_url + comment.body.split()[1])
-                comment.reply(x)
-                print("replied to comment")
+                word, definition, example, word_url = x
+                response = "\n\n".join([word, definition, example, word_url, sign_off])
+                print("response:", response)
+                comment.reply(response)
             except praw.exceptions.APIException as e:
                 if e.error_type == "RATELIMIT":
                     delay = re.search("(\d+) minutes?", e.message)
@@ -48,4 +50,7 @@ def run_bot():
                 if errors > 5:
                     print("crashed ")
                     exit(1)
-run_bot()
+
+if __name__ == '__main__':
+    print("Urban dictionary bot running...")
+    run_bot()
