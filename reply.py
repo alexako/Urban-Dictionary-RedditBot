@@ -15,8 +15,10 @@ reddit = praw.Reddit(client_id=config.CLIENT_ID,
 
 
 subreddit = reddit.subreddit('testingground4bots')
+bot_url = ""
 bot_summon = "!urbandefine"
 urban_url = "http://www.urbandictionary.com/define.php?term="
+sign_off = "\n\nBrought to you by [Urban Dictionary Bot](%s)" % bot_url 
 
 
 def run_bot():
