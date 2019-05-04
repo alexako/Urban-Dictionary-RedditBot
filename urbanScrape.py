@@ -22,9 +22,9 @@ def read_definition(word_url):
         example = soup.find("div","example").text
     except:
         definition = " isn't defined :-("
-        word = "NULL"
-        example = "NULL"
-    return [word,definition,example]
+        word = ""
+        example = ""
+    return [word, definition, example, word_url]
 
 
 
