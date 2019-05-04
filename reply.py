@@ -2,14 +2,15 @@ import praw
 import urbanScrape as us
 import time
 import re
+import config
 import sys
 sys.setrecursionlimit(10000)
 
-reddit = praw.Reddit(client_id='',
-                        client_secret='',
+reddit = praw.Reddit(client_id=config.CLIENT_ID,
+                        client_secret=config.CLIENT_SECRET,
                         user_agent='<console:urban_define_bot:0.0.2 (by /u/',
-                        username='',
-                        password='')
+                        username=config.USERNAME,
+                        password=config.PASSWORD)
 
 
 
